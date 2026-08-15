@@ -219,6 +219,9 @@ func (c ToolCall) Validate() error {
 	if err := json.Unmarshal(c.Arguments, &object); err != nil {
 		return fmt.Errorf("arguments must be a JSON object: %w", err)
 	}
+	if object == nil {
+		return errors.New("arguments must be a JSON object")
+	}
 	return nil
 }
 
